@@ -1,0 +1,16 @@
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\bin\Debug\net10.0-windows\BMS_Data_Decoder.exe
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\bin\Debug\net10.0-windows\BMS_Data_Decoder.deps.json
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\bin\Debug\net10.0-windows\BMS_Data_Decoder.runtimeconfig.json
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\bin\Debug\net10.0-windows\BMS_Data_Decoder.dll
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\bin\Debug\net10.0-windows\BMS_Data_Decoder.pdb
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\BMS_Data_Decoder.Form1.resources
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\BMS_Data_Decoder.csproj.GenerateResource.cache
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\BMS_Data_Decoder.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\BMS_Data_Decoder.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\BMS_Data_Decoder.AssemblyInfo.cs
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\BMS_Data_Decoder.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\BMS_Data_Decoder.dll
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\refint\BMS_Data_Decoder.dll
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\BMS_Data_Decoder.pdb
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\BMS_Data_Decoder.genruntimeconfig.cache
+C:\Users\User\source\repos\BMS_Data_Decoder\BMS_Data_Decoder\obj\Debug\net10.0-windows\ref\BMS_Data_Decoder.dll
