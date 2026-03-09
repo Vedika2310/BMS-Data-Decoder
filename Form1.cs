@@ -79,8 +79,6 @@ namespace BMS_Data_Decoder
             return value;
         }
 
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -91,12 +89,7 @@ namespace BMS_Data_Decoder
                 byte[] fileBytes = File.ReadAllBytes(ofd.FileName);
 
                 /* FIND HEADER END */
-                int headerEnd = Array.IndexOf(fileBytes, (byte)'\n');
-
-                if (headerEnd > 0)
-                {
-                    headerEnd += 1; // skip newline
-                }
+                int headerEnd = Array.IndexOf(fileBytes, (byte)'<');
 
                 /* REMOVE HEADER BYTES */
                 byte[] dataBytes = fileBytes.Skip(headerEnd).ToArray();
@@ -120,18 +113,40 @@ namespace BMS_Data_Decoder
                     // check if enough bytes for frame + end marker
                     if (frameStart + 95 + 2 > dataBytes.Length) break;
 
-                    byte[] frameBytes = dataBytes.Skip(frameStart).Take(95).ToArray();
+                    int frameEnd = 0;
 
-                    // check end marker \n\r
-                    if (dataBytes[frameStart + 95] != (byte)'\r' || dataBytes[frameStart + 95 + 1] != (byte)'\n')
+                    for(int i = frameStart; i < dataBytes.Length - 1; i++)
                     {
-                        offset = frameStart + 1; // skip invalid frame
-                        continue;
+                        if (dataBytes[i] == (byte)'\r' && dataBytes[i + 1] == (byte)'\n')
+                        {
+                            frameEnd = i - 1;
+                            break;
+                        }
                     }
 
+                    byte[] frameBytes = dataBytes.Skip(frameStart).Take(frameEnd - frameStart + 1).ToArray();
+
+                    // check end marker \n\r
+                    //if (dataBytes[frameStart + 95] != (byte)'\r' || dataBytes[frameStart + 95 + 1] != (byte)'\n')
+                    //{
+                    //    offset = frameStart + 1; // skip invalid frame
+                    //    continue;
+                    //}
+
                     // decode frameBytes exactly like before
-                    int fOffset = 0;
+                    
                     BMSFrame frame = new BMSFrame();
+                    offset = frameStart;
+
+                    frame.BAT_Voltage = BitConverter.ToUInt16(dataBytes, offset) * 10;
+                    offset += 2;
+
+                    frame.Capacity = BitConverter.ToInt32(dataBytes, offset);
+                    offset += 4;
+
+                    frame.FaultBits = BitConverter.ToUInt32(dataBytes, offset);
+                    offset += 4;
+
                     frame.AccumulatedSeconds = BitConverter.ToUInt32(dataBytes, offset);
                     offset += 4;
 
@@ -140,9 +155,6 @@ namespace BMS_Data_Decoder
 
                     frame.PresentStateStatus = dataBytes[offset];
                     offset += 1;
-
-                    frame.BAT_Voltage = BitConverter.ToUInt16(dataBytes, offset);
-                    offset += 2;
 
                     frame.BAT_Current = BitConverter.ToInt16(dataBytes, offset);
                     offset += 2;
@@ -155,9 +167,6 @@ namespace BMS_Data_Decoder
 
                     frame.AverageCellVoltage = BitConverter.ToUInt16(dataBytes, offset);
                     offset += 2;
-
-                    frame.Capacity = BitConverter.ToInt32(dataBytes, offset);
-                    offset += 4;
 
                     frame.CycleCount = BitConverter.ToUInt32(dataBytes, offset);
                     offset += 4;
@@ -183,9 +192,6 @@ namespace BMS_Data_Decoder
                     frame.FETTemp = BitConverter.ToInt16(dataBytes, offset);
                     offset += 2;
 
-                    frame.FaultBits = BitConverter.ToUInt32(dataBytes, offset);
-                    offset += 4;
-
                     frame.CHGFET_Status = dataBytes[offset];
                     offset += 1;
 
@@ -196,8 +202,6 @@ namespace BMS_Data_Decoder
                     offset += 4;
 
                     frame.PresentFileNumber = dataBytes[offset++];
-
-
 
                     frame.C1 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
                     frame.C2 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
@@ -233,7 +237,7 @@ namespace BMS_Data_Decoder
 
                     frames.Add(frame);
                     // move offset to next frame
-                    offset = frameStart + 95 + 2; // skip \n\r
+                    offset += 2; // skip \n\r
                 }
 
                 dataGridView1.Columns.Clear();
@@ -269,7 +273,7 @@ public class BMSFrame
     public uint AccumulatedSeconds { get; set; }
     public ushort RestartCounter { get; set; }
     public byte PresentStateStatus { get; set; }
-    public ushort BAT_Voltage { get; set; }
+    public int BAT_Voltage { get; set; }
     public short BAT_Current { get; set; }
     public ushort MaxCellVoltage { get; set; }
     public ushort MinCellVoltage { get; set; }

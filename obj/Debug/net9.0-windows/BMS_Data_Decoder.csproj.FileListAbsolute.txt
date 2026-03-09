@@ -1,0 +1,17 @@
+D:\Webber_Application_Workspace\BMS-Data-Decoder\bin\Debug\net9.0-windows\BMS_Data_Decoder.exe
+D:\Webber_Application_Workspace\BMS-Data-Decoder\bin\Debug\net9.0-windows\BMS_Data_Decoder.deps.json
+D:\Webber_Application_Workspace\BMS-Data-Decoder\bin\Debug\net9.0-windows\BMS_Data_Decoder.runtimeconfig.json
+D:\Webber_Application_Workspace\BMS-Data-Decoder\bin\Debug\net9.0-windows\BMS_Data_Decoder.dll
+D:\Webber_Application_Workspace\BMS-Data-Decoder\bin\Debug\net9.0-windows\BMS_Data_Decoder.pdb
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.Form1.resources
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.csproj.GenerateResource.cache
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.GeneratedMSBuildEditorConfig.editorconfig
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.AssemblyInfoInputs.cache
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.AssemblyInfo.cs
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.csproj.CoreCompileInputs.cache
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.sourcelink.json
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.dll
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\refint\BMS_Data_Decoder.dll
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.pdb
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\BMS_Data_Decoder.genruntimeconfig.cache
+D:\Webber_Application_Workspace\BMS-Data-Decoder\obj\Debug\net9.0-windows\ref\BMS_Data_Decoder.dll
