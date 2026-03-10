@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BMS_Data_Decoder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13afdb87afdd941fa3dde7d1e7ac347f53076eba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f894223994833f93dd93041a8bb808cebca6e331")]
 [assembly: System.Reflection.AssemblyProductAttribute("BMS_Data_Decoder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BMS_Data_Decoder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -116,11 +116,11 @@ namespace BMS_Data_Decoder
 
                     int frameEnd = 0;
 
-<<<<<<< HEAD
-                    for(int i = frameStart; i < dataBytes.Length - 1; i++)
-=======
+
+                   
+
                     for (int i = frameStart; i < dataBytes.Length - 1; i++)
->>>>>>> eb060a4 (Added new BMS parameters to decoder)
+
                     {
                         if (dataBytes[i] == (byte)'\r' && dataBytes[i + 1] == (byte)'\n')
                         {
@@ -139,46 +139,12 @@ namespace BMS_Data_Decoder
                     //}
 
                     // decode frameBytes exactly like before
-<<<<<<< HEAD
+
                     
                     BMSFrame frame = new BMSFrame();
                     offset = frameStart;
 
-                    frame.BAT_Voltage = BitConverter.ToUInt16(dataBytes, offset) * 10;
-                    offset += 2;
-
-                    frame.Capacity = BitConverter.ToInt32(dataBytes, offset);
-                    offset += 4;
-
-                    frame.FaultBits = BitConverter.ToUInt32(dataBytes, offset);
-                    offset += 4;
-
-                    frame.AccumulatedSeconds = BitConverter.ToUInt32(dataBytes, offset);
-                    offset += 4;
-
-                    frame.RestartCounter = BitConverter.ToUInt16(dataBytes, offset);
-                    offset += 2;
-
-                    frame.PresentStateStatus = dataBytes[offset];
-                    offset += 1;
-
-                    frame.BAT_Current = BitConverter.ToInt16(dataBytes, offset);
-                    offset += 2;
-
-                    frame.MaxCellVoltage = BitConverter.ToUInt16(dataBytes, offset);
-                    offset += 2;
-
-                    frame.MinCellVoltage = BitConverter.ToUInt16(dataBytes, offset);
-                    offset += 2;
-
-                    frame.AverageCellVoltage = BitConverter.ToUInt16(dataBytes, offset);
-                    offset += 2;
-
-                    frame.CycleCount = BitConverter.ToUInt32(dataBytes, offset);
-=======
-
-                    BMSFrame frame = new BMSFrame();
-                    offset = frameStart;
+                   
 
 
                     frame.stackVoltage = (BitConverter.ToInt16(dataBytes, offset) * 10);
@@ -191,7 +157,7 @@ namespace BMS_Data_Decoder
                     offset += 4;
 
                     frame.BMS_Uptime = BitConverter.ToUInt32(dataBytes, offset);
->>>>>>> eb060a4 (Added new BMS parameters to decoder)
+
                     offset += 4;
 
                     frame.CC2_Current = BitConverter.ToInt32(dataBytes, offset);
@@ -212,10 +178,8 @@ namespace BMS_Data_Decoder
                     frame.client_id = BitConverter.ToUInt16(dataBytes, offset);
                     offset += 2;
 
-<<<<<<< HEAD
-                    frame.CHGFET_Status = dataBytes[offset];
-                    offset += 1;
-=======
+
+
                     frame.softwareUpdateVersion = BitConverter.ToUInt16(dataBytes, offset);
                     offset += 2;
 
@@ -227,19 +191,17 @@ namespace BMS_Data_Decoder
                     frame.controller_TS4_Temp = BitConverter.ToInt16(dataBytes, offset); offset += 2;
                     frame.controller_TS5_Temp = BitConverter.ToInt16(dataBytes, offset); offset += 2;
                     frame.controller_TS6_Temp = BitConverter.ToInt16(dataBytes, offset); offset += 2;
->>>>>>> eb060a4 (Added new BMS parameters to decoder)
+
 
                     frame.BQ_InternalTemp = BitConverter.ToInt16(dataBytes, offset);
                     offset += 2;
 
-<<<<<<< HEAD
-=======
+
                     frame.BQ_TS3_Temp = BitConverter.ToInt16(dataBytes, offset);
                     offset += 2;
 
            
 
->>>>>>> eb060a4 (Added new BMS parameters to decoder)
                     frame.C1 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
                     frame.C2 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
                     frame.C3 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
@@ -291,6 +253,36 @@ namespace BMS_Data_Decoder
                 dataGridView1.Columns.Clear();
                 dataGridView1.AutoGenerateColumns = true;
                 dataGridView1.DataSource = frames;
+                dataGridView1.Columns["C1"].DisplayIndex = 11;
+                dataGridView1.Columns["C2"].DisplayIndex = 12;
+                dataGridView1.Columns["C3"].DisplayIndex = 13;
+                dataGridView1.Columns["C4"].DisplayIndex = 14;
+                dataGridView1.Columns["C5"].DisplayIndex = 15;
+                dataGridView1.Columns["C6"].DisplayIndex = 16;
+                dataGridView1.Columns["C7"].DisplayIndex = 17;
+                dataGridView1.Columns["C8"].DisplayIndex = 18;
+                dataGridView1.Columns["C9"].DisplayIndex = 19;
+                dataGridView1.Columns["C10"].DisplayIndex = 20;
+                dataGridView1.Columns["C11"].DisplayIndex = 21;
+                dataGridView1.Columns["C12"].DisplayIndex = 22;
+                dataGridView1.Columns["C13"].DisplayIndex = 23;
+                dataGridView1.Columns["C14"].DisplayIndex = 24;
+                dataGridView1.Columns["C15"].DisplayIndex = 25;
+                dataGridView1.Columns["C16"].DisplayIndex = 26;
+                dataGridView1.Columns["cycleCount"].DisplayIndex = 32;
+                dataGridView1.Columns["softwareUpdateVersion"].DisplayIndex = 35;
+
+                dataGridView1.Columns["BMS_Uptime"].DisplayIndex = 0;
+                dataGridView1.Columns["stackVoltage"].DisplayIndex = 1;
+                dataGridView1.Columns["PACK_PinVoltage"].DisplayIndex = 2;
+                dataGridView1.Columns["CC2_Current"].DisplayIndex = 3;
+                dataGridView1.Columns["SOC_ChargePercentage"].DisplayIndex = 4;
+
+                dataGridView1.Columns["SOC_ChargePercentage"].HeaderText = "SOC";
+                dataGridView1.Columns["BQ_InternalTemp"].HeaderText = "AFE Temp";
+                dataGridView1.Columns["BQ_TS3_Temp"].HeaderText = "MOSFET Temp";
+
+
                 MessageBox.Show($"Loaded {frames.Count} frames successfully!");
             }
 
@@ -328,19 +320,8 @@ namespace BMS_Data_Decoder
 }
 public class BMSFrame
 {
-<<<<<<< HEAD
-    public uint AccumulatedSeconds { get; set; }
-    public ushort RestartCounter { get; set; }
-    public byte PresentStateStatus { get; set; }
-    public int BAT_Voltage { get; set; }
-    public short BAT_Current { get; set; }
-    public ushort MaxCellVoltage { get; set; }
-    public ushort MinCellVoltage { get; set; }
-    public ushort AverageCellVoltage { get; set; }
-    public int Capacity { get; set; }
-    public uint CycleCount { get; set; }
-    public uint BalanceFlag { get; set; }
-=======
+
+   
    
     
     public int stackVoltage { get; set; }
@@ -354,7 +335,7 @@ public class BMSFrame
     public short PACK_PinVoltage { get; set; }
     public ushort client_id { get; set; }
     public ushort softwareUpdateVersion { get; set; }
->>>>>>> eb060a4 (Added new BMS parameters to decoder)
+
 
   
 
