@@ -11,7 +11,7 @@ namespace BMS_Data_Decoder
         {
             InitializeComponent();
 
-
+            dataGridView1.Visible = false;
             // --- Button Style ---
             btnLoad.FlatStyle = FlatStyle.Flat;
             btnLoad.FlatAppearance.BorderSize = 0;
@@ -65,7 +65,8 @@ namespace BMS_Data_Decoder
             this.Controls.Add(topPanel);
             topPanel.Controls.Add(lblTitle);
             topPanel.Controls.Add(btnLoad);
-            btnLoad.Location = new Point(20, 20); // adjust position
+            btnLoad.Location = new Point(20, 20);
+            // move toward center // adjust position
 
 
 
@@ -115,7 +116,11 @@ namespace BMS_Data_Decoder
 
                     int frameEnd = 0;
 
+<<<<<<< HEAD
                     for(int i = frameStart; i < dataBytes.Length - 1; i++)
+=======
+                    for (int i = frameStart; i < dataBytes.Length - 1; i++)
+>>>>>>> eb060a4 (Added new BMS parameters to decoder)
                     {
                         if (dataBytes[i] == (byte)'\r' && dataBytes[i + 1] == (byte)'\n')
                         {
@@ -134,6 +139,7 @@ namespace BMS_Data_Decoder
                     //}
 
                     // decode frameBytes exactly like before
+<<<<<<< HEAD
                     
                     BMSFrame frame = new BMSFrame();
                     offset = frameStart;
@@ -169,40 +175,71 @@ namespace BMS_Data_Decoder
                     offset += 2;
 
                     frame.CycleCount = BitConverter.ToUInt32(dataBytes, offset);
-                    offset += 4;
+=======
 
-                    frame.BalanceFlag = BitConverter.ToUInt32(dataBytes, offset);
-                    offset += 4;
+                    BMSFrame frame = new BMSFrame();
+                    offset = frameStart;
 
-                    frame.IgnitionKeyStatus = dataBytes[offset];
-                    offset += 1;
 
-                    frame.FullChargeStatus = dataBytes[offset];
-                    offset += 1;
-                    frame.TS1 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
-                    frame.TS2 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
-                    frame.TS3 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
-                    frame.TS4 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
-                    frame.TS5 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
-                    frame.TS6 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
-
-                    frame.InternalTemp = BitConverter.ToInt16(dataBytes, offset);
+                    frame.stackVoltage = (BitConverter.ToInt16(dataBytes, offset) * 10);
                     offset += 2;
 
-                    frame.FETTemp = BitConverter.ToInt16(dataBytes, offset);
+                    frame.batteryCapacity = BitConverter.ToInt32(dataBytes, offset);
+                    offset += 4;
+
+                    frame.faultBits = BitConverter.ToUInt32(dataBytes, offset);
+                    offset += 4;
+
+                    frame.BMS_Uptime = BitConverter.ToUInt32(dataBytes, offset);
+>>>>>>> eb060a4 (Added new BMS parameters to decoder)
+                    offset += 4;
+
+                    frame.CC2_Current = BitConverter.ToInt32(dataBytes, offset);
+                    offset += 4;
+
+                    frame.cycleCount = BitConverter.ToUInt32(dataBytes, offset);
+                    offset += 4;
+
+                    frame.balanceFlag = BitConverter.ToUInt32(dataBytes, offset);
+                    offset += 4;
+
+                    frame.screenshotTimeStamp = BitConverter.ToUInt32(dataBytes, offset);
+                    offset += 4;
+
+                    frame.PACK_PinVoltage = BitConverter.ToInt16(dataBytes, offset);
                     offset += 2;
 
+                    frame.client_id = BitConverter.ToUInt16(dataBytes, offset);
+                    offset += 2;
+
+<<<<<<< HEAD
                     frame.CHGFET_Status = dataBytes[offset];
                     offset += 1;
+=======
+                    frame.softwareUpdateVersion = BitConverter.ToUInt16(dataBytes, offset);
+                    offset += 2;
 
-                    frame.DSGFET_Status = dataBytes[offset];
-                    offset += 1;
+                   
+                    
+                    frame.controller_TS1_Temp = BitConverter.ToInt16(dataBytes, offset); offset += 2;
+                    frame.controller_TS2_Temp = BitConverter.ToInt16(dataBytes, offset); offset += 2;
+                    frame.controller_TS3_Temp = BitConverter.ToInt16(dataBytes, offset); offset += 2;
+                    frame.controller_TS4_Temp = BitConverter.ToInt16(dataBytes, offset); offset += 2;
+                    frame.controller_TS5_Temp = BitConverter.ToInt16(dataBytes, offset); offset += 2;
+                    frame.controller_TS6_Temp = BitConverter.ToInt16(dataBytes, offset); offset += 2;
+>>>>>>> eb060a4 (Added new BMS parameters to decoder)
 
-                    frame.Date = BitConverter.ToUInt32(dataBytes, offset);
-                    offset += 4;
+                    frame.BQ_InternalTemp = BitConverter.ToInt16(dataBytes, offset);
+                    offset += 2;
 
-                    frame.PresentFileNumber = dataBytes[offset++];
+<<<<<<< HEAD
+=======
+                    frame.BQ_TS3_Temp = BitConverter.ToInt16(dataBytes, offset);
+                    offset += 2;
 
+           
+
+>>>>>>> eb060a4 (Added new BMS parameters to decoder)
                     frame.C1 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
                     frame.C2 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
                     frame.C3 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
@@ -219,26 +256,37 @@ namespace BMS_Data_Decoder
                     frame.C14 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
                     frame.C15 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
                     frame.C16 = BitConverter.ToInt16(dataBytes, offset); offset += 2;
-                    frame.PackVoltage = BitConverter.ToInt16(dataBytes, offset);
-                    offset += 2;
 
-                    frame.BMS_Status2 = dataBytes[offset];
+                    frame.configModifyCount = dataBytes[offset];
+                    offset += 1;
+
+                    frame.minorRevision = dataBytes[offset];
+                    offset += 1;
+
+                    frame.projectSeries = dataBytes[offset];
+                    offset += 1;
+
+                    frame.SOC_ChargePercentage = dataBytes[offset];
                     offset += 1;
 
                     frame.SOH = dataBytes[offset];
                     offset += 1;
 
-                    frame.SWVersion = dataBytes[offset];
+                    frame.StatusBits = dataBytes[offset];
                     offset += 1;
 
-                    frame.MR = dataBytes[offset];
+                    frame.fileNumber = dataBytes[offset];
                     offset += 1;
 
+                   
+                    
 
                     frames.Add(frame);
                     // move offset to next frame
                     offset += 2; // skip \n\r
                 }
+
+                dataGridView1.Visible = true;   // show table
 
                 dataGridView1.Columns.Clear();
                 dataGridView1.AutoGenerateColumns = true;
@@ -261,15 +309,26 @@ namespace BMS_Data_Decoder
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                string[] lines = File.ReadAllLines(ofd.FileName);
 
-                MessageBox.Show("CSV Loaded Successfully!");
+                dataGridView1.Columns.Clear();
+                dataGridView1.Rows.Clear();
+
+                dataGridView1.Columns.Add("RawData", "Encoded CSV Data");
+
+                foreach (string line in lines)
+                {
+                    dataGridView1.Rows.Add(line);
+                }
+
+                dataGridView1.Visible = true;   // show table after loading file
             }
-
         }
     }
 }
 public class BMSFrame
 {
+<<<<<<< HEAD
     public uint AccumulatedSeconds { get; set; }
     public ushort RestartCounter { get; set; }
     public byte PresentStateStatus { get; set; }
@@ -281,25 +340,33 @@ public class BMSFrame
     public int Capacity { get; set; }
     public uint CycleCount { get; set; }
     public uint BalanceFlag { get; set; }
+=======
+   
+    
+    public int stackVoltage { get; set; }
+    public int batteryCapacity { get; set; }
+    public uint faultBits { get; set; }
+    public uint BMS_Uptime { get; set; }
+    public int CC2_Current { get; set; }
+    public uint cycleCount { get; set; }
+    public uint balanceFlag { get; set; }
+    public uint screenshotTimeStamp { get; set; }
+    public short PACK_PinVoltage { get; set; }
+    public ushort client_id { get; set; }
+    public ushort softwareUpdateVersion { get; set; }
+>>>>>>> eb060a4 (Added new BMS parameters to decoder)
 
-    public byte IgnitionKeyStatus { get; set; }
+  
 
-    public byte FullChargeStatus { get; set; }
+    public short controller_TS1_Temp { get; set; }
+    public short controller_TS2_Temp { get; set; }
+    public short controller_TS3_Temp { get; set; }
+    public short controller_TS4_Temp { get; set; }
+    public short controller_TS5_Temp { get; set; }
+    public short controller_TS6_Temp { get; set; }
+    public short BQ_InternalTemp { get; set; }
+    public short BQ_TS3_Temp { get; set; }
 
-    public short TS1 { get; set; }
-    public short TS2 { get; set; }
-    public short TS3 { get; set; }
-    public short TS4 { get; set; }
-    public short TS5 { get; set; }
-    public short TS6 { get; set; }
-    public short InternalTemp { get; set; }
-    public short FETTemp { get; set; }
-
-    public uint FaultBits { get; set; }
-    public byte CHGFET_Status { get; set; }
-    public byte DSGFET_Status { get; set; }
-    public uint Date { get; set; }
-    public byte PresentFileNumber { get; set; }
     public short C1 { get; set; }
     public short C2 { get; set; }
     public short C3 { get; set; }
@@ -318,11 +385,16 @@ public class BMSFrame
     public short C16 { get; set; }
 
 
-    public short PackVoltage { get; set; }
+    public byte configModifyCount { get; set; }
 
 
-    public byte BMS_Status2 { get; set; }
+    public byte minorRevision { get; set; }
+    public byte projectSeries { get; set; }
+    public byte SOC_ChargePercentage { get; set; }
     public byte SOH { get; set; }
-    public byte SWVersion { get; set; }
-    public byte MR { get; set; }
+    public byte StatusBits { get; set; }
+    public byte fileNumber { get; set; }
+
+   
+
 }
